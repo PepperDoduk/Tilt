@@ -34,8 +34,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            grav *= -1;
+        }
         Vector3 cameraDownDirection = -mainCamera.transform.up;
-        Vector2 gravity = new Vector2(cameraDownDirection.x, cameraDownDirection.y) * gravityMagnitude;
+        Vector2 gravity = new Vector2(cameraDownDirection.x, cameraDownDirection.y) * gravityMagnitude * grav;
         rb.AddForce(gravity, ForceMode2D.Force);
     }
 
