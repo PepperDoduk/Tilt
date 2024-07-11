@@ -28,7 +28,7 @@ public class Map : MonoBehaviour
             return;
         }
 
-        inst = 0;
+        inst = 1;
         lastSpawnY = player.position.y;
     }
 
