@@ -13,6 +13,6 @@ public class PrefabMap : MonoBehaviour
     
     public float ReturnRand(int maxIndex)
     {
-        return Mathf.CeilToInt(UnityEngine.Random.Range(0, Mathf.Min(randNum, maxIndex + 1)));
+        return Mathf.CeilToInt(UnityEngine.Random.Range(0, Mathf.Min(randNum, maxIndex + 2)));
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     int spwan = 0;
-
+    AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameObject.SetActive(false);
         spwan = UnityEngine.Random.Range(1, 11);
 
@@ -25,6 +26,7 @@ public class Coin : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Coin Collected");
+            audioSource.Play();
             StartCoroutine(DestroyCoinAfterDelay(0.1f));
         }
     }

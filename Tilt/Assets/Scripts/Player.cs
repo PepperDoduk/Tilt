@@ -51,12 +51,18 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("teleport"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Teleport);
             transform.position = new Vector3(transform.position.x + 5, transform.position.y - 5, 0);
         }
 
         if (other.gameObject.CompareTag("teleport2"))
         {
             transform.position = new Vector3(tel2.ReturnTelXY().x - 0.5f, tel2.ReturnTelXY().y, 0);
+        }
+        
+        if (other.gameObject.CompareTag("teleport3"))
+        {
+            transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y +3, 0);
         }
 
         if (other.gameObject.CompareTag("Coin"))
@@ -71,6 +77,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Coin"))
         {
             Debug.Log("Coin, +50");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
             score.AddScore(50);
         }
     }
