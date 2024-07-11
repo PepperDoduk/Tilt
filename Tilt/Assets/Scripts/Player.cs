@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,9 +11,10 @@ public class Player : MonoBehaviour
     public teleport tel1;
     public teleport tel2;
 
+    public Score score;
+
     void Start()
     {
-
         if (mainCamera == null)
         {
             Debug.LogError("Main camera is not assigned and there is no Camera with tag 'MainCamera' in the scene.");
@@ -34,14 +33,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            grav *= -1;
+            Gravity();
         }
         Vector3 cameraDownDirection = -mainCamera.transform.up;
         Vector2 gravity = new Vector2(cameraDownDirection.x, cameraDownDirection.y) * gravityMagnitude * grav;
         rb.AddForce(gravity, ForceMode2D.Force);
+    }
+
+    public void Gravity()
+    {
+        grav *= -1;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -54,6 +57,21 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("teleport2"))
         {
             transform.position = new Vector3(tel2.ReturnTelXY().x - 0.5f, tel2.ReturnTelXY().y, 0);
+        }
+
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Debug.Log("Coin, +50");
+            score.AddScore(50);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Debug.Log("Coin, +50");
+            score.AddScore(50);
         }
     }
 }

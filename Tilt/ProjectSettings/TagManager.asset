@@ -6,6 +6,7 @@ TagManager:
   tags:
   - teleport
   - teleport2
+  - Coin
   layers:
   - Default
   - TransparentFX

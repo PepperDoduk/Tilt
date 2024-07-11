@@ -10,9 +10,9 @@ public class PrefabMap : MonoBehaviour
     {
         return transform.position.y;
     }
-
+    
     public float ReturnRand(int maxIndex)
     {
-        return Mathf.CeilToInt(UnityEngine.Random.Range(1, Mathf.Min(randNum, maxIndex)));
+        return Mathf.CeilToInt(UnityEngine.Random.Range(0, Mathf.Min(randNum, maxIndex + 1)));
     }
 }
