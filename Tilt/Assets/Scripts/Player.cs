@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        grav = 1;
         if (mainCamera == null)
         {
             Debug.LogError("Main camera is not assigned and there is no Camera with tag 'MainCamera' in the scene.");
@@ -57,11 +58,13 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("teleport2"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Teleport);
             transform.position = new Vector3(tel2.ReturnTelXY().x - 0.5f, tel2.ReturnTelXY().y, 0);
         }
         
         if (other.gameObject.CompareTag("teleport3"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Teleport);
             transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y +3, 0);
         }
 
